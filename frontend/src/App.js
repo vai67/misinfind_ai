@@ -8,12 +8,18 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Welcome to the Misinformation Detector</h1>
         <p> Paste article below to check its credibilty!</p>
+        
         <input
           type="text"
           placeholder="Paste article here..."
           style={{ width: '60%', height: '100px', marginTop: '20px' }}
         />
-        <p>
+
+        <button
+          style={{ marginTop: '20px', padding: '10px 20px', fontSize: '16px', backgroundColor: '#61dafb', border: 'none', borderRadius: '5px', cursor: 'pointer', fontWeight: 'bold' }}
+        ></button>
+
+          <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
