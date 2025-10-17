@@ -11,3 +11,10 @@ df=pd.read_csv('data/news_cleaned.csv')
 #Get shape and head
 print("Dataset shape:", df.shape)
 print(df.head())
+
+# get the labels from the DataFrame
+labels = df.label
+labels.head()
+
+# split the data into train and test
+x_train, x_test, y_train, y_test = train_test_split(df['text'], labels, test_size=0.2, random_state=7)
