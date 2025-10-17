@@ -5,6 +5,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        background: liner-gradient(90deg, #1CB5E0 0%, #000851 100%);
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Welcome to the Misinformation Detector</h1>
         <p> Paste article below to check its credibilty!</p>
