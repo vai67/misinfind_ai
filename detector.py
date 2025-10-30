@@ -27,12 +27,24 @@ labels.head()
 # split the data into train and test
 x_train, x_test, y_train, y_test = train_test_split(df['text'], labels, test_size=0.2, random_state=7)
 
+# test split 
+assert len(x_train) > 0 and len(x_test) > 0, "Train/test slit empty"
+assert len(x_train) == len(y_train), "Inconsistent train data lengths"
+assert len(x_test) == len(y_test), "Inconsistent test data lengths"
+print("Train and test split successful")
+
 # DataFlair - Initialize a TfidfVectorizer
 tfidf_vectorizer = TfidfVectorizer(stop_words='english', max_df=0.7)
 
 # DataFlair - Fit and transform train set, transform test set
 tfidf_train = tfidf_vectorizer.fit_transform(x_train)
 tfidf_test = tfidf_vectorizer.transform(x_test)
+
+# test vectorizer
+assert tfidf_train.shape[0] == len(x_train), "TF-IDF train set row mismatch"
+assert tfidf_test.shape[0] == len(x_test), "TF-IDF test set row mismatch"
+assert tfidf_train.shape[1] == tfidf_test.shape[1], "TF-IDF feature count mismatch"
+print("TF-IDF vectorization successful")
 
 # DataFlair - Initialize a PassiveAggressiveClassifier
 pac = PassiveAggressiveClassifier(max_iter=50)
