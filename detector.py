@@ -12,6 +12,14 @@ df=pd.read_csv('data/news_cleaned.csv')
 print("Dataset shape:", df.shape)
 print(df.head())
 
+# sanity checks for data 
+assert not df.empty, "Dataset is empty."
+assert "text" in df.columns and "label" in df.columns, "Missing required columns"
+assert df["text"].isnull().sum() == 0, "Null values in text columns."
+unique_labels = set(df["label"])
+assert unique_labels <= {"FAKE", "REAL"}, f"Unexpected labels: {unique_labels}"
+
+
 # get the labels from the DataFrame
 labels = df.label
 labels.head()
