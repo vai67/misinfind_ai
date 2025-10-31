@@ -1,11 +1,14 @@
-import logo from './logo2.png';
-import './App.css';
+import logo from "./logo2.png";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header"
-        style={{ background: 'linear-gradient(90deg, #1CB5E0 0%, #000851 100%)' }}
+      <header
+        className="App-header"
+        style={{
+          background: "linear-gradient(90deg, #1CB5E0 0%, #000851 100%)",
+        }}
       >
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Welcome to the Misinformation Detector</h1>
@@ -14,14 +17,21 @@ function App() {
         <input
           type="text"
           placeholder="Paste article here..."
-          style={{ width: '100%', height: '100px', marginTop: '20px' }}
+          style={{ width: "100%", height: "100px", marginTop: "20px" }}
         />
 
-
-
         <button
-        aria-label = "Run credibility check"
-          style={{ marginTop: '20px', padding: '10px 20px', fontSize: '16px', backgroundColor: '#61dafb', border: 'none', borderRadius: '5px', cursor: 'pointer', fontWeight: 'bold' }}
+          aria-label="Run credibility check"
+          style={{
+            marginTop: "20px",
+            padding: "10px 20px",
+            fontSize: "16px",
+            backgroundColor: "#61dafb",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+            fontWeight: "bold",
+          }}
         ></button>
 
         <p>
