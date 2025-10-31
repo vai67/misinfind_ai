@@ -17,7 +17,10 @@ function App() {
           style={{ width: '60%', height: '100px', marginTop: '20px' }}
         />
 
+
+
         <button
+        aria-label = "Run credibility check"
           style={{ marginTop: '20px', padding: '10px 20px', fontSize: '16px', backgroundColor: '#61dafb', border: 'none', borderRadius: '5px', cursor: 'pointer', fontWeight: 'bold' }}
         ></button>
 
