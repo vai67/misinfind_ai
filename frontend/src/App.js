@@ -4,24 +4,11 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header" style={{ textAlign: 'center' }}>
-        <div style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          gap: '0px', width: 'fit-content', textAlign: 'center'
-        }}>
-          <img src={logo} className="App-logo" alt="logo"
-            style={{
-              position: 'absolute',
-              left: '10px',
-              top: '-3%',
-              transform: 'translateY(-50%)',
-              width: 420,
-              height: 420
-            }}
-          />
-          <h1 style={{ width: 600, marginLeft: 0 }}>Welcome to the Misinformation Detector</h1>
-        </div>
-
+      <header className="App-header"
+        style={{ background: 'linear-gradient(90deg, #1CB5E0 0%, #000851 100%)' }}
+      >
+        <img src={logo} className="App-logo" alt="logo" />
+        <h1>Welcome to the Misinformation Detector</h1>
         <p> Paste article below to check its credibilty!</p>
 
         <input
