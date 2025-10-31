@@ -1,18 +1,33 @@
-import logo from './logo.svg';
+import logo from './logo2.png';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Welcome to the Misinformation Detector</h1>
+      <header className="App-header" style={{ textAlign: 'center' }}>
+        <div style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          gap: '0px', width: 'fit-content', textAlign: 'center'
+        }}>
+          <img src={logo} className="App-logo" alt="logo"
+            style={{
+              position: 'absolute',
+              left: '10px',
+              top: '-3%',
+              transform: 'translateY(-50%)',
+              width: 420,
+              height: 420
+            }}
+          />
+          <h1 style={{ width: 600, marginLeft: 0 }}>Welcome to the Misinformation Detector</h1>
+        </div>
+
         <p> Paste article below to check its credibilty!</p>
 
         <input
           type="text"
           placeholder="Paste article here..."
-          style={{ width: '60%', height: '100px', marginTop: '20px' }}
+          style={{ width: '100%', height: '100px', marginTop: '20px' }}
         />
 
         <button
