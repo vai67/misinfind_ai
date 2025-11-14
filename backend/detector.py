@@ -63,3 +63,13 @@ assert 0 <= score <= 1, f"Invalid accuracy score: {score}"
 cm = confusion_matrix(y_test, y_pred, labels=["FAKE", "REAL"])
 print(confusion_matrix(y_test, y_pred, labels=["FAKE", "REAL"]))
 assert cm.shape == (2, 2), "Confusion matrix should be 2x2."
+
+import joblib
+
+# Save trained model
+joblib.dump(pac, "model.pkl")
+
+# Save fitted vectorizer
+joblib.dump(tfidf_vectorizer, "vectorizer.pkl")
+
+print("Saved model.pkl and vectorizer.pkl")
