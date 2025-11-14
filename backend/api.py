@@ -8,8 +8,8 @@ CORS(app)
 pac = joblib.load("model.pkl")
 vectorizer = joblib.load("vectorizer.pkl")
 
-@app.route("/predict", methods=["POST"])
-def predict():
+@app.route("/analyze", methods=["POST"])
+def analyze():
     data = request.get_json()
     text = data.get("text", "")
 
