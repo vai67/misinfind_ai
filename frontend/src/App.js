@@ -4,6 +4,7 @@ import "./App.css";
 
 function App() {
   const [articleText, setArticleText] = useState("");
+  const [analysisResult, setAnalysisResult] = useState(null);
 
   const handleAnalyze = async () => {
     try {
@@ -14,8 +15,11 @@ function App() {
       });
 
       const result = await response.json();
-      console.log("Analysis result:", result);
-      alert("Received result from backend! Check console.");
+      if (result.success) {
+        setAnalysisResult(result.result); //actually sets instead of just logging result
+      } else {
+        alert("Error: " + result.error);
+      }
     } catch (error) {
       console.error("Error:", error);
     }
@@ -56,6 +60,13 @@ function App() {
         >
           Run Check
         </button>
+
+        {analysisResult && ( //adds new textblock if result is true
+          <div style={{ marginTop: "20px", textAlign: "left", width: "100%" }}>
+            <h3>Analysis Result:</h3>
+            <pre>{JSON.stringify(analysisResult, null, 2)}</pre>
+          </div>
+        )}
 
         <p>
           Edit <code>src/App.js</code> and save to reload.
