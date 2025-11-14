@@ -20,3 +20,11 @@ def predict():
     pred = pac.predict(vec)[0]
 
     return jsonify({"prediction" : pred})
+
+@app.route("/", methods=["GET"])
+def home():
+    return "Fake News Detector API is running!"
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
