@@ -7,3 +7,16 @@ CORS(app)
 
 pac = joblib.load("model.pkl")
 vectorizer = joblib.load("vectorizer.pkl")
+
+@app.route("/predict", methods=["POST"])
+def predict():
+    data = request.get_json()
+    text = data.get("text", "")
+
+    if not text.strip():
+        return jsonify({"error" : "no text provided"}), 400
+    
+    vec = vectorizer.transform([text])
+    pred = pac.predict(vec)[0]
+
+    return jsonify({"prediction" : pred})
