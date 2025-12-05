@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "./logo2.png";
+import logo from "./file-search-corner.svg";
 import "./App.css";
 
 function App() {
@@ -38,12 +38,12 @@ function App() {
         }}
       >
         <img src={logo} className="App-logo" alt="logo" />
-        <h1>Welcome to the Misinformation Detector</h1>
-        <p>Paste article below to check its credibility!</p>
+        <h1 className="title">Welcome to the Misinformation Detector!</h1>
+        <p className="subtitle">Paste an article below to check its credibility!</p>
 
         <textarea
           placeholder="Paste article here..."
-          style={{ width: "100%", height: "100px", marginTop: "20px" }}
+          style={{ width: "100%", height: "100px" }}
           value={articleText}
           onChange={(e) => setArticleText(e.target.value)}
         />
@@ -71,18 +71,6 @@ function App() {
             <pre>{JSON.stringify(analysisResult, null, 2)}</pre>
           </div>
         )}
-
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
