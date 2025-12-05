@@ -7,19 +7,23 @@ function App() {
   const [analysisResult, setAnalysisResult] = useState(null);
 
   const handleAnalyze = async () => {
+    console.log("BUTTON CLICKED, sending:", articleText);
     try {
-      const response = await fetch("http://localhost:5000/analyze", {
+      const response = await fetch("http://127.0.0.1:5000/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: articleText }),
       });
 
       const result = await response.json();
-      if (result.success) {
-        setAnalysisResult(result.result); //actually sets instead of just logging result
+      console.log("Fetch result: ", result);
+      setAnalysisResult(result.prediction);
+      /*
+      if (result.prediction !== undefined) {
+        setAnalysisResult(result.prediction); //actually sets instead of just logging result
       } else {
         alert("Error: " + result.error);
-      }
+      }*/
     } catch (error) {
       console.error("Error:", error);
     }

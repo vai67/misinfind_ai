@@ -3,14 +3,16 @@ from flask_cors import CORS
 import joblib
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["http://127.0.0.1:3000"], supports_credentials=True)
 
 pac = joblib.load("model.pkl")
 vectorizer = joblib.load("vectorizer.pkl")
 
 @app.route("/analyze", methods=["POST"])
 def analyze():
+    
     data = request.get_json()
+    print("Received data: ", data)
     text = data.get("text", "")
 
     if not text.strip():
@@ -19,6 +21,7 @@ def analyze():
     vec = vectorizer.transform([text])
     pred = pac.predict(vec)[0]
 
+    print("Prediction: ", pred)
     return jsonify({"prediction" : pred})
 
 @app.route("/", methods=["GET"])
