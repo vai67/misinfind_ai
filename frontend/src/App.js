@@ -1,5 +1,6 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./file-search-corner.svg";
+import "./App.css";
 
 
 function ConfidenceMeter({ confidence }) {
@@ -39,61 +40,74 @@ function ConfidenceMeter({ confidence }) {
 }
 
 function App() {
+  const [articleText, setArticleText] = useState("");
+  const [analysisResult, setAnalysisResult] = useState(null);
+
+  const handleAnalyze = async () => {
+    console.log("BUTTON CLICKED, sending:", articleText);
+    try {
+      const response = await fetch("http://127.0.0.1:5000/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: articleText }),
+      });
+
+      const result = await response.json();
+      console.log("Fetch result: ", result);
+      setAnalysisResult(result.prediction);
+      /*
+      if (result.prediction !== undefined) {
+        setAnalysisResult(result.prediction); //actually sets instead of just logging result
+      } else {
+        alert("Error: " + result.error);
+      }*/
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header"
-        style={{ background: 'linear-gradient(90deg, #1CB5E0 0%, #000851 100%)' }}
+      <header
+        className="App-header"
+        style={{
+          background: "linear-gradient(90deg, #1CB5E0 0%, #000851 100%)",
+        }}
       >
         <img src={logo} className="App-logo" alt="logo" />
-        <h1>Welcome to the Misinformation Detector</h1>
-        <p> Paste article below to check its credibilty!</p>
-        
-        <input
-          type="text"
+        <h1 className="title">Welcome to the Misinformation Detector!</h1>
+        <p className="subtitle">Paste an article below to check its credibility!</p>
+
+        <textarea
           placeholder="Paste article here..."
-          style={{ width: '60%', height: '100px', marginTop: '20px' }}
+          style={{ width: "100%", height: "100px" }}
+          value={articleText}
+          onChange={(e) => setArticleText(e.target.value)}
         />
 
-
-
-                <button
+        <button
           onClick={handleAnalyze}
           aria-label="Run credibility check"
           style={{
             marginTop: "20px",
-            padding: "12px 24px",
+            padding: "10px 20px",
             fontSize: "16px",
             backgroundColor: "#61dafb",
             border: "none",
             borderRadius: "5px",
             cursor: "pointer",
-            fontWeight: "bold"
+            fontWeight: "bold",
           }}
         >
           Run Check
         </button>
 
-            {analysisResult && (
-      <div style={{ marginTop: "20px" }}>
-        <h3>Analysis Result:</h3>
-        <pre>{JSON.stringify(analysisResult, null, 2)}</pre>
-
-        {/* Confidence Meter */}
-        <ConfidenceMeter confidence={analysisResult.confidence} />
-      </div>
-    )}
-
-          <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {analysisResult && ( //adds new textblock if result is true
+          <div style={{ marginTop: "20px", textAlign: "left", width: "100%" }}>
+            <h3>Analysis Result:</h3>
+            <pre>{JSON.stringify(analysisResult, null, 2)}</pre>
+          </div>
+        )}
       </header>
     </div>
   );
