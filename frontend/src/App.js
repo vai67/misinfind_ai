@@ -7,7 +7,7 @@ function ConfidenceMeter({ confidence }) {
   // confidence = number between 0 and 1
   const percent = Math.round(confidence * 100);
 
-  let barColor = "#f1c40f"; 
+  let barColor = "#f1c40f";
   if (percent > 70) barColor = "#2ecc71"; // green
   if (percent < 40) barColor = "#e74c3c"; // red
 
@@ -54,7 +54,7 @@ function App() {
 
       const result = await response.json();
       console.log("Fetch result: ", result);
-      setAnalysisResult(result.prediction);
+      setAnalysisResult(result);
       /*
       if (result.prediction !== undefined) {
         setAnalysisResult(result.prediction); //actually sets instead of just logging result
@@ -92,11 +92,15 @@ function App() {
         >
           Run Check
         </button>
-
-        {analysisResult && ( //adds new textblock if result is true
+        {analysisResult && (
           <div style={{ marginTop: "20px", textAlign: "left", width: "100%" }}>
             <h3>Analysis Result:</h3>
+
             <pre>{JSON.stringify(analysisResult, null, 2)}</pre>
+
+            {analysisResult.confidence !== undefined && (
+              <ConfidenceMeter confidence={analysisResult.confidence} />
+            )}
           </div>
         )}
       </header>
