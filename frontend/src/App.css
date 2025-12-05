@@ -3,18 +3,28 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 200px;
   pointer-events: none;
+}
+
+.title {
+  margin-top: 50px;
+  font-family: "Inter", sans-serif;
+}
+
+.subtitle {
+  font-family: "Inter";
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+    /* width: 300px; */
   }
 }
 
 .App-header {
-  background-color: #282c34;
+  background: linear-gradient(90deg, #be8ddc 0%, #020632 100%);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -32,6 +42,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
