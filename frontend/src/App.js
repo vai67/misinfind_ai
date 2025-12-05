@@ -2,6 +2,43 @@ import React, { useState } from "react";
 import logo from "./file-search-corner.svg";
 import "./App.css";
 
+
+function ConfidenceMeter({ confidence }) {
+  // confidence = number between 0 and 1
+  const percent = Math.round(confidence * 100);
+
+  let barColor = "#f1c40f"; 
+  if (percent > 70) barColor = "#2ecc71"; // green
+  if (percent < 40) barColor = "#e74c3c"; // red
+
+  return (
+    <div style={{ width: "60%", marginTop: "20px" }}>
+      <p style={{ marginBottom: "6px", fontWeight: "bold" }}>
+        Confidence: {percent}%
+      </p>
+
+      <div
+        style={{
+          height: "20px",
+          width: "100%",
+          backgroundColor: "#eee",
+          borderRadius: "10px",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            height: "100%",
+            width: `${percent}%`,
+            backgroundColor: barColor,
+            transition: "width 0.4s ease",
+          }}
+        ></div>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const [articleText, setArticleText] = useState("");
   const [analysisResult, setAnalysisResult] = useState(null);
