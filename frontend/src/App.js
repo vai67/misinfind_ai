@@ -19,24 +19,23 @@ function App() {
 
 
 
-        <button
+                <button
+          onClick={handleAnalyze}
           aria-label="Run credibility check"
           style={{
             marginTop: "20px",
             padding: "12px 24px",
-            fontSize: "18px",
+            fontSize: "16px",
             backgroundColor: "#61dafb",
             border: "none",
-            borderRadius: "8px",
+            borderRadius: "5px",
             cursor: "pointer",
-            fontWeight: "bold",
-            transition: "0.3s",
+            fontWeight: "bold"
           }}
-          onMouseOver={(e) => (e.target.style.backgroundColor = "#4ab0e8")}
-          onMouseOut={(e) => (e.target.style.backgroundColor = "#61dafb")}
         >
-          Check Credibility
+          Run Check
         </button>
+
 
 
           <p>
