@@ -3,8 +3,17 @@
 }
 
 .App-logo {
-  height: 80vmin;
+  height: 200px;
   pointer-events: none;
+}
+
+.title {
+  margin-top: 50px;
+  font-family: "Inter", sans-serif;
+}
+
+.subtitle {
+  font-family: "Inter";
 }
 
 @media (prefers-reduced-motion: no-preference) {
