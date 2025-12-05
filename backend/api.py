@@ -56,11 +56,26 @@ def _run_self_tests():
     assert hasattr(pac, "classes_"), "Model does not have 'classes_' attribute"
     assert len(pac.classes_) >= 1, "Model has no classes"
 
+    with app.test_client() as client:
+        resp = client.get("/")
+        assert resp.status_code == 200, "Home endpoint failed"
+        assert resp.status_code == 200, "Home endpoint did not return 200 OK"
 
+        resp = client.post("/analyze", json={"text": "Breaking news: something happened!"})
+        data = resp.get_json()
+        assert isinstance(data, dict), "Response is not a JSON object"
+        assert "prediction" in data, "'prediction' not in response"
+
+        resp = client.post("/analyze", json={"text": "   "})
+        assert resp.status_code == 400, "Empty text did not return 400 error"
+        data = resp.get_json()
+        assert "error" in data, "'error' not in response for empty text"
     print("✅ All API self-tests passed.")
+
 if __name__ == "__main__":
     _run_self_tests()  
     app.run(debug=True)
+
 
 
 
