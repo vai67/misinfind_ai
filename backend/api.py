@@ -44,10 +44,23 @@ def analyze():
 def home():
     return "Fake News Detector API is running!"
 
+def _run_self_tests():
+    '''
+    Basic self-tests to verify the API functionality.
+    '''
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.linear_model import PassiveAggressiveClassifier
 
+    assert isinstance(vectorizer, TfidfVectorizer), "Vectorizer is not TfidfVectorizer" 
+    assert isinstance(pac, PassiveAggressiveClassifier), "Model is not PassiveAggressiveClassifier"
+    assert hasattr(pac, "classes_"), "Model does not have 'classes_' attribute"
+    assert len(pac.classes_) >= 1, "Model has no classes"
+
+
+    print("✅ All API self-tests passed.")
 if __name__ == "__main__":
+    _run_self_tests()  
     app.run(debug=True)
-
 
 
 
