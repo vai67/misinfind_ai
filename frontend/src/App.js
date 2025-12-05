@@ -42,25 +42,16 @@ function App() {
         <p className="subtitle">Paste an article below to check its credibility!</p>
 
         <textarea
+          className="article"
           placeholder="Paste article here..."
-          style={{ width: "100%", height: "100px" }}
           value={articleText}
           onChange={(e) => setArticleText(e.target.value)}
         />
 
         <button
+          className="check-btn"
           onClick={handleAnalyze}
           aria-label="Run credibility check"
-          style={{
-            marginTop: "20px",
-            padding: "10px 20px",
-            fontSize: "16px",
-            backgroundColor: "#61dafb",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-            fontWeight: "bold",
-          }}
         >
           Run Check
         </button>

@@ -3,6 +3,7 @@
 }
 
 .App-logo {
+  margin-top: 50px;
   height: 200px;
   pointer-events: none;
 }
@@ -13,7 +14,54 @@
 }
 
 .subtitle {
+  margin-top: 0px;
   font-family: "Inter";
+}
+
+.article {
+  width: 1200px;
+  min-height: 180px;
+  border-radius: 20px;
+  padding: 20px;
+  font-family: "Inter";
+  background-color: rgb(245, 245, 245);
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 4px 0 rgba(255, 255, 255, 0.5);
+  border: 2px rgb(209, 209, 209) solid; 
+}
+
+.article:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+.article:focus {
+  outline: none;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 6px 20px 0 rgba(255, 255, 255, 0.5);
+  border: 2px rgb(135, 205, 255) solid;
+}
+
+.check-btn {
+  font-family: "Inter";
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+  padding: 20px 40px;
+  margin-top: 30px;
+  border-radius: 30px;
+  background-color: #36a4c3;
+  border: none;
+  cursor: pointer;
+  transition: 
+    background-color 0.3s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.check-btn:hover {
+  background-color: #47bada;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 @media (prefers-reduced-motion: no-preference) {
