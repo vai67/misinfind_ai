@@ -20,9 +20,24 @@ function App() {
 
 
         <button
-        aria-label = "Run credibility check"
-          style={{ marginTop: '20px', padding: '10px 20px', fontSize: '16px', backgroundColor: '#61dafb', border: 'none', borderRadius: '5px', cursor: 'pointer', fontWeight: 'bold' }}
-        ></button>
+          aria-label="Run credibility check"
+          style={{
+            marginTop: "20px",
+            padding: "12px 24px",
+            fontSize: "18px",
+            backgroundColor: "#61dafb",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer",
+            fontWeight: "bold",
+            transition: "0.3s",
+          }}
+          onMouseOver={(e) => (e.target.style.backgroundColor = "#4ab0e8")}
+          onMouseOut={(e) => (e.target.style.backgroundColor = "#61dafb")}
+        >
+          Check Credibility
+        </button>
+
 
           <p>
           Edit <code>src/App.js</code> and save to reload.
