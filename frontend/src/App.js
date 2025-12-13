@@ -7,7 +7,7 @@ function ConfidenceMeter({ confidence }) {
   // confidence = number between 0 and 1
   const percent = Math.round(confidence * 100);
 
-  let barColor = "#f1c40f"; 
+  let barColor = "#f1c40f";
   if (percent > 70) barColor = "#2ecc71"; // green
   if (percent < 40) barColor = "#e74c3c"; // red
 
@@ -51,59 +51,41 @@ function App() {
   }
   return (
     <div className="App">
-      <header className="App-header"
-        style={{ background: 'linear-gradient(90deg, #1CB5E0 0%, #000851 100%)' }}
+      <header
+        className="App-header"
+        style={{
+          background: "linear-gradient(90deg, #1CB5E0 0%, #000851 100%)",
+        }}
       >
         <img src={logo} className="App-logo" alt="logo" />
-        <h1>Welcome to the Misinformation Detector</h1>
-        <p> Paste article below to check its credibilty!</p>
-        
-        <input
-          type="text"
+        <h1 className="title">Welcome to the Misinformation Detector!</h1>
+        <p className="subtitle">Paste an article below to check its credibility!</p>
+
+        <textarea
+          className="article"
           placeholder="Paste article here..."
-          style={{ width: '60%', height: '100px', marginTop: '20px' }}
+          value={articleText}
+          onChange={(e) => setArticleText(e.target.value)}
         />
 
-
-
-                <button
+        <button
+          className="check-btn"
           onClick={handleAnalyze}
           aria-label="Run credibility check"
-          style={{
-            marginTop: "20px",
-            padding: "12px 24px",
-            fontSize: "16px",
-            backgroundColor: "#61dafb",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-            fontWeight: "bold"
-          }}
         >
           Run Check
         </button>
+        {analysisResult && (
+          <div style={{ marginTop: "20px", textAlign: "left", width: "100%" }}>
+            <h3>Analysis Result:</h3>
 
-            {analysisResult && (
-      <div style={{ marginTop: "20px" }}>
-        <h3>Analysis Result:</h3>
-        <pre>{JSON.stringify(analysisResult, null, 2)}</pre>
+            <pre>{JSON.stringify(analysisResult, null, 2)}</pre>
 
-        {/* Confidence Meter */}
-        <ConfidenceMeter confidence={analysisResult.confidence} />
-      </div>
-    )}
-
-          <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+            {analysisResult.confidence !== undefined && (
+              <ConfidenceMeter confidence={analysisResult.confidence} />
+            )}
+          </div>
+        )}
       </header>
     </div>
   );
