@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -39,6 +40,15 @@ function ConfidenceMeter({ confidence }) {
 }
 
 function App() {
+  const [analysisResult, setAnalysisResult] = useState(null);
+
+  function handleAnalyze() {
+
+    setAnalysisResult({
+      label: "temporary",
+      confidence: 0.82
+    });
+  }
   return (
     <div className="App">
       <header className="App-header"
