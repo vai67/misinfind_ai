@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import logo from "./file-search-corner.svg";
-import "./App.css";
+import { useState } from 'react';
+import logo from './logo.svg';
+import './App.css';
 
 
 function ConfidenceMeter({ confidence }) {
@@ -40,32 +40,15 @@ function ConfidenceMeter({ confidence }) {
 }
 
 function App() {
-  const [articleText, setArticleText] = useState("");
   const [analysisResult, setAnalysisResult] = useState(null);
 
-  const handleAnalyze = async () => {
-    console.log("BUTTON CLICKED, sending:", articleText);
-    try {
-      const response = await fetch("http://127.0.0.1:5000/analyze", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: articleText }),
-      });
+  function handleAnalyze() {
 
-      const result = await response.json();
-      console.log("Fetch result: ", result);
-      setAnalysisResult(result);
-      /*
-      if (result.prediction !== undefined) {
-        setAnalysisResult(result.prediction); //actually sets instead of just logging result
-      } else {
-        alert("Error: " + result.error);
-      }*/
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
+    setAnalysisResult({
+      label: "temporary",
+      confidence: 0.82
+    });
+  }
   return (
     <div className="App">
       <header
