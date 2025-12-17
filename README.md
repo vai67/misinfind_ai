@@ -116,3 +116,18 @@ The Flask API acts as middleware between the frontend and the machine learning m
 - Jazmin Uribe  
 - Vaibhavi Srivastava  
 - Camryn Lee  
+
+---
+## Installation and Setup
+Installation and Reproducibility Instructions
+
+### Backend Setup
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+
+### Frontend Setup
+2. To run the frontend, navigate to the frontend directory and execute:
+npm install  
+npm start  
+The application will run on http://localhost:3000/
