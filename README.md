@@ -125,11 +125,12 @@ Installation and Reproducibility Instructions
 1. Navigate to the backend directory:
    ```bash
    cd backend
+   python3 api.py
 
 ### Frontend Setup
 2. To run the frontend, navigate to the frontend directory and execute:
 ```bash
-   cd backend
+cd frontend
 npm install  
 npm start
 ```
