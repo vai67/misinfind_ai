@@ -112,10 +112,10 @@ The Flask API acts as middleware between the frontend and the machine learning m
 
 ## Team
 
-- Angelina Zhou  
-- Jazmin Uribe  
-- Vaibhavi Srivastava  
-- Camryn Lee  
+- Angelina Zhou  (Backend)
+- Jazmin Uribe (Frontend)
+- Vaibhavi Srivastava (Frontend) 
+- Camryn Lee  (Backend)
 
 ---
 ## Installation and Setup
