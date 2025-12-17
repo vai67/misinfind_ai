@@ -128,6 +128,9 @@ Installation and Reproducibility Instructions
 
 ### Frontend Setup
 2. To run the frontend, navigate to the frontend directory and execute:
+```bash
+   cd backend
 npm install  
-npm start  
+npm start
+```
 The application will run on http://localhost:3000/
