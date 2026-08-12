@@ -1,4 +1,4 @@
-# Misinformation Detector
+# Misinfind AI - Misinformation Detection Platform
 
 CS 222 Final Project
 
